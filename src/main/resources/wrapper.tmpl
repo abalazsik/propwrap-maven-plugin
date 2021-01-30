@@ -1,0 +1,27 @@
+
+package %PACKAGE%;
+
+import java.util.Properties;
+
+public class %CLASSNAME% {
+
+	private Properties props;
+	
+	public static final %CLASSNAME% properties = new %CLASSNAME%();//NOSONAR
+	
+	private %CLASSNAME%() {
+	    	props = new Properties();
+		try {
+	        	props.load(this.getClass().getResourceAsStream("/%FILENAME%"));
+		} catch(Exception e) {
+			throw new RuntimeException("Failed load %FILENAME%!", e);
+		}
+	    }
+
+	public Properties getProperties() {
+		return props;
+	}
+
+	%PROPERTIES%
+	
+}
